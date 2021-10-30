@@ -9,4 +9,4 @@ local-server/*
 !local-server/readme.md
 
 */src/main/resources/*.jar
-*/target/*
+*/target/

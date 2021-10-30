@@ -7,4 +7,5 @@ MinecraftサーバーMODであるSpigotMCで動くプラグインの例文集で
 ## 基本
 
 1. [ローカルでSpigotMCを動かす](local-server)
+2. [何も書かれていないプラグイン](blank-plugin)
 
