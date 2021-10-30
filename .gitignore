@@ -1,0 +1,11 @@
+.vscode
+.settings
+.classpath
+.project
+
+local-server/*
+!local-server/build.bat
+!local-server/start.bat
+
+*/src/main/resources/*.jar
+*/target/*
