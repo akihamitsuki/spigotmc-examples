@@ -6,5 +6,5 @@ MinecraftサーバーMODであるSpigotMCで動くプラグインの例文集で
 
 ## 基本
 
-1. [local-server](ローカルでSpigotMCを動かす)
+1. [ローカルでSpigotMCを動かす](local-server)
 

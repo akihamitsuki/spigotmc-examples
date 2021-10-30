@@ -6,6 +6,7 @@
 local-server/*
 !local-server/build.bat
 !local-server/start.bat
+!local-server/readme.md
 
 */src/main/resources/*.jar
 */target/*
