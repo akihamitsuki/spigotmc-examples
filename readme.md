@@ -12,4 +12,5 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
 1. [ローカルでSpigotMCを動かす](local-server)
 2. [何も書かれていないプラグイン](blank-plugin)
 3. [独自コマンドを追加する](create-slash-command)
+4. [イベントを検知する](event-handling)
 
