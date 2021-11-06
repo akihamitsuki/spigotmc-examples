@@ -1,0 +1,5 @@
+main: com.example.signboard.Main
+name: signboard
+version: 0.1
+commands:
+  signboard:
