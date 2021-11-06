@@ -1,0 +1,5 @@
+main: com.example.guiinventory.Main
+name: gui-inventory
+version: 0.1
+commands:
+  menu:

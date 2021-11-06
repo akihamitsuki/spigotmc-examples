@@ -14,3 +14,8 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
 3. [独自コマンドを追加する](create-slash-command)
 4. [イベントを検知する](event-handling)
 5. [周期的にメソッドを実行する](countdown)
+
+
+## 応用
+
+1. [インベントリ画面でGUIを作る](gui-inventory)
