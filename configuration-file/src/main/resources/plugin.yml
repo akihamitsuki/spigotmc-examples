@@ -1,0 +1,5 @@
+main: com.example.configfile.Main
+name: configuration-file
+version: 0.1
+commands:
+  config:

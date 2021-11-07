@@ -1,0 +1,7 @@
+
+zombie:
+  spawn:
+    world: 'world'
+    x: 0
+    y: 4
+    z: 0

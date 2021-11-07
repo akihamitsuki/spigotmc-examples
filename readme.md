@@ -7,16 +7,21 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
 * 製作者も学習中のため、間違いや適切でない記述が含まれている可能性があります。
 
 
-## 基本
+## レベル0
 
 1. [ローカルでSpigotMCを動かす](local-server)
 2. [何も書かれていないプラグイン](blank-plugin)
-3. [独自コマンドを追加する](create-slash-command)
-4. [イベントを検知する](event-handling)
 
 
-## 応用
+## レベル1
 
-1. [防具立てを使って文章を表示する](signboard)
-2. [周期的にメソッドを実行する](countdown)
-3. [インベントリ画面でGUIを作る](gui-inventory)
+1. [独自コマンドを追加する](create-slash-command)
+2. [イベントを検知する](event-handling)
+
+
+## レベル2
+
+1. [設定ファイルを使う](configuration-file)
+2. [防具立てを使って文章を表示する](signboard)
+3. [周期的にメソッドを実行する](countdown)
+4. [インベントリ画面でGUIを作る](gui-inventory)
