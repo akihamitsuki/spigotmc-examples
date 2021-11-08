@@ -1,0 +1,5 @@
+main: com.example.entitymanagement.Main
+name: entity-management
+version: 0.1
+commands:
+  entity:
