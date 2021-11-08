@@ -21,7 +21,8 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
 
 ## レベル2
 
-1. [設定ファイルを使う](configuration-file)
-2. [防具立てを使って文章を表示する](signboard)
-3. [周期的にメソッドを実行する](countdown)
-4. [インベントリ画面でGUIを作る](gui-inventory)
+1. [エンティティを管理する](entity-management)
+2. [設定ファイルを使う](configuration-file)
+3. [防具立てを使って文章を表示する](signboard)
+4. [周期的にメソッドを実行する](countdown)
+5. [インベントリ画面でGUIを作る](gui-inventory)
