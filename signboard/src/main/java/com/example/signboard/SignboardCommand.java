@@ -22,7 +22,9 @@ public class SignboardCommand implements CommandExecutor {
 
       if (args.length >= 3 && args[0].equals("write")) {
         String tag = args[1];
-        String[] lines = Arrays.copyOfRange(args, 2, args.length - 1);
+        // copyOfRange(対象の配列, 開始インデックス(含む), 終了インデックス(含まない))
+        // 終了インデックスはその箇所を「含まない」ので、[0,1,2]の配列なら、3を指定することで最後までになる。
+        String[] lines = Arrays.copyOfRange(args, 2, args.length);
         this.main.signboard.showText(player.getWorld(), player.getLocation(), tag, lines);
         return true;
       }
