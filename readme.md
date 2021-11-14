@@ -26,3 +26,8 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
 3. [防具立てを使って文章を表示する](signboard)
 4. [周期的にメソッドを実行する](countdown)
 5. [インベントリ画面でGUIを作る](gui-inventory)
+
+
+## レベル3
+
+1. [重力を持つブロック](block-gravity)

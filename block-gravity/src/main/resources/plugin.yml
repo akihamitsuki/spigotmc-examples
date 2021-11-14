@@ -1,0 +1,5 @@
+main: com.example.blockgravity.Main
+name: block-gravity
+version: 0.1
+# バージョンを指定して最新のブロックを判定できるようにする
+api-version: 1.17
