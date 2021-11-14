@@ -30,4 +30,4 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
 
 ## レベル3
 
-1. [重力を持つブロック](block-gravity)
+1. [重力の影響を受けるブロック](block-gravity)
