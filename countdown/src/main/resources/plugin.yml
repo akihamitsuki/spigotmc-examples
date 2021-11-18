@@ -1,3 +1,5 @@
 main: com.example.countdown.Main
 name: countdown
 version: 0.1
+commands:
+  countdown:

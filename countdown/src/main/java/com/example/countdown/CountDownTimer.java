@@ -6,12 +6,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class CountDownTimer extends BukkitRunnable {
 
   /** 秒数 */
-  private int seconds;
-
-  public CountDownTimer() {
-    // 秒数を設定
-    this.seconds = 20;
-  }
+  private int seconds = 20;
 
   /**
    * カウントダウンを開始
@@ -38,15 +33,17 @@ public class CountDownTimer extends BukkitRunnable {
    */
   @Override
   public void run() {
-    // 0以下になったとき
+    // 0以下になったとき(0より小さくなることはないはずだが、なんらかの状況でそうなったとしても止まるようにしている)
     if (seconds <= 0) {
+      // メッセージを送る
       Bukkit.broadcastMessage("終了!");
       // cancel()を実行すると停止
       this.cancel();
+      // これより下は実行しないようにreturnを返して終わる
       return;
     }
 
-    // 5秒ごと(5で割った余りが0のとき)
+    // 5秒ごと(今の秒数を5で割った余りが0のとき)
     // または5秒未満のときに残り時間を表示
     if (seconds % 5 == 0 || seconds < 5) {
       Bukkit.broadcastMessage("残り" + seconds + "秒。");
