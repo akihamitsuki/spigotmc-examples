@@ -1,0 +1,5 @@
+main: com.example.bindbook.Main
+name: bindbook
+version: 0.1
+commands:
+  book:
