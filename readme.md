@@ -33,3 +33,4 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
 ## レベル3
 
 1. [重力の影響を受けるブロック](block-gravity)
+2. [プレイヤーをチームに所属させる](team-classification)
