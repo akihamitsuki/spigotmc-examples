@@ -8,7 +8,7 @@ public class StatsComponent {
   /** 倒した数 */
   private Integer kill = 0;
   // private Integer death = 0;
-  // private Integer breakBlock = 0;
+  // private Integer brokenBlock = 0;
   // ...必要な情報を追記していく
 
   /**

@@ -53,7 +53,7 @@ public class StatsManager {
     // そのコンポーネントの加算メソッドを使う
     component.addKillCount();
     // プレイヤーに通知をする
-    player.sendMessage(component.getKillCount() + "体倒ししました。");
+    player.sendMessage("合計 " + component.getKillCount() + " 体倒しました。");
   }
 
 }
