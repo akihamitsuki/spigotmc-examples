@@ -1,6 +1,6 @@
 # SpigotMC プラグイン例文集
 
-MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例文集です。
+MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグインの例文集です。
 
 
 * 学習用のため、過剰にコメントが書き込まれています。
@@ -28,6 +28,7 @@ MinecraftのサーバーMODである**SpigotMC**で動くプラグインの例�
    1. [防具立てを使って複数行を表示する](signboard)
 5. [周期的にメソッドを実行する](countdown)
 6. [インベントリ画面でGUIを作る](gui-inventory)
+7. [倒した回数などを記録する](statistics-management)
 
 
 ## レベル3
