@@ -35,3 +35,4 @@ MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグイン
 
 1. [重力の影響を受けるブロック](block-gravity)
 2. [プレイヤーをチームに所属させる](team-classification)
+3. [ゲームの流れ](game-template)

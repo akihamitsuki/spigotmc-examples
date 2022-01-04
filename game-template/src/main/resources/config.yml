@@ -1,0 +1,16 @@
+required-players: 1
+countdown-seconds: 20
+lobby:
+  world: 'world'
+  x: 100
+  y: 80
+  z: 100
+  pitch: 60
+  yaw: 60
+arena:
+  world: 'world'
+  x: 200
+  y: 80
+  z: 100
+  pitch: 60
+  yaw: 60
