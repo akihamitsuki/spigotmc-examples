@@ -19,11 +19,11 @@ public class GameRuleListener implements Listener {
     // そのプレイヤーはゲーム中か
     boolean isPlaying = GameManager.isPlaying(player);
     // そのプレイヤーのいる会場はゲーム中か
-    boolean isGameLive = GameManager.getArena(player).getGameState().equals(GameState.LIVE);
+    boolean isGameLive = GameManager.getArena().getGameState().equals(GameState.LIVE);
     // 両方を満たしていたら
     if (isPlaying && isGameLive) {
       // ポイントの加算処理を行う(具体的な処理はゲームクラスで行う)
-      GameManager.getArena(player).getGame().addPoint(player, 1);
+      GameManager.getArena().getGame().addPoint(player, 1);
     }
   }
 
@@ -37,7 +37,7 @@ public class GameRuleListener implements Listener {
     Player player = event.getPlayer();
 
     if (GameManager.isPlaying(player)) {
-      GameManager.getArena(player).removePlayer(player);
+      GameManager.getArena().removePlayer(player);
     }
   }
 }

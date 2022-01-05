@@ -19,7 +19,7 @@ public class Countdown extends BukkitRunnable {
    */
   public void begin() {
     // 会場の状態をカウントダウンに設定する
-    arena.setState(GameState.COUNTDOWN);
+    arena.setGameState(GameState.COUNTDOWN);
     // 0ティック後から、20ティックごとにrun()を実行する
     this.runTaskTimer(Main.getInstance(), 0, 20);
   }
@@ -49,7 +49,7 @@ public class Countdown extends BukkitRunnable {
       // このタイマーを停止させる
       cancel();
       // 会場の状態を募集中に設定する
-      arena.setState(GameState.RECRUITING);
+      arena.setGameState(GameState.RECRUITING);
       // 会場のプレイヤーに通知する。これは抜けたプレイヤーには通知されない。
       arena.sendMessage(ChatColor.RED + "開始条件を満たさなくなったのでカウントダウンを停止します。");
       // リターンでこのメソッドを終了させる

@@ -27,25 +27,12 @@ public class GameManager {
    * @return 参加中かどうか
    */
   public static boolean isPlaying(Player player) {
-    if (arena.getPlayers().contains(player.getUniqueId())) {
+    // そのアリーナのプレイヤーリストに対象プレイヤーのUUIDが含まれているか
+    if (getArena().getPlayers().contains(player.getUniqueId())) {
       return true;
     }
 
     return false;
-  }
-
-  /**
-   * そのプレイヤーの参加しているアリーナ
-   *
-   * @param player 対象プレイヤー
-   * @return 参加しているアリーナのインスタンス
-   */
-  public static Arena getArena(Player player) {
-    if (arena.getPlayers().contains(player.getUniqueId())) {
-      return arena;
-    }
-
-    return null;
   }
 
   // getter

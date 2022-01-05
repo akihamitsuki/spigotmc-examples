@@ -33,7 +33,7 @@ public class GameCommand implements CommandExecutor {
    */
   private boolean leave(Player player) {
     if (GameManager.isPlaying(player)) {
-      GameManager.getArena(player).removePlayer(player);
+      GameManager.getArena().removePlayer(player);
       player.sendMessage(ChatColor.GREEN + "アリーナから離脱しました。");
       return true;
     }
