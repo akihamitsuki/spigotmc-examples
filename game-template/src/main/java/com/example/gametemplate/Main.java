@@ -1,5 +1,6 @@
 package com.example.gametemplate;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -22,6 +23,8 @@ public class Main extends JavaPlugin {
     new GameManager();
     // コマンドを登録する
     getCommand("game").setExecutor(new GameCommand());
+    // ゲーム用のイベントリスナーを登録する
+    Bukkit.getPluginManager().registerEvents(new GameRuleListener(), Main.getInstance());
   }
 
   /**

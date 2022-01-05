@@ -27,8 +27,6 @@ public class GameRule {
    */
   public GameRule(Arena arena) {
     this.arena = arena;
-    // ゲーム用のイベントリスナーを登録する
-    Bukkit.getPluginManager().registerEvents(new GameRuleListener(), Main.getInstance());
   }
 
   /**
