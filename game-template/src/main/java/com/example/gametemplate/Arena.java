@@ -8,6 +8,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 /**
  * ゲームが行われる会場(arena/闘技場)に関するクラス
@@ -35,7 +37,7 @@ public class Arena {
    * ゲーム開始処理
    */
   public void start() {
-    setState(GameState.LIVE);
+    setGameState(GameState.LIVE);
     // 所属しているプレイヤーに通知
     sendMessage(ChatColor.GREEN + "ゲーム開始");
     // ゲーム開始
@@ -80,6 +82,14 @@ public class Arena {
   private void initializePlayer(Player player) {
     player.getInventory().clear();
     player.setGameMode(GameMode.ADVENTURE);
+    // エフェクトをすべて消す
+    for (PotionEffect effect : player.getActivePotionEffects()) {
+      player.removePotionEffect(effect.getType());
+    }
+    // 個別にエフェクトをかけなおす
+    player.addPotionEffect(new PotionEffect(PotionEffectType.HEAL, 1, 255, false, false));
+    player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 1, 255, false, false));
+    player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 255, false, false));
   }
 
   /**
@@ -145,7 +155,7 @@ public class Arena {
 
   // setter
 
-  public void setState(GameState state) {
+  public void setGameState(GameState state) {
     this.state = state;
   }
 

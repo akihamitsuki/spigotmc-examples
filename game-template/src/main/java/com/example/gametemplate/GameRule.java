@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 
 /**
  * ゲームルールに関するクラス
@@ -56,6 +57,10 @@ public class GameRule {
     player.closeInventory();
     // ゲームモードをサバイバルにする
     player.setGameMode(GameMode.SURVIVAL);
+    // エフェクトをすべて消す
+    for (PotionEffect effect : player.getActivePotionEffects()) {
+      player.removePotionEffect(effect.getType());
+    }
   }
 
   /**
@@ -94,19 +99,24 @@ public class GameRule {
    */
   private Player getHighestScorePlayer() {
     // 各プレイヤーのスコアから最大の値を探す
+    // 初期値は0
     int max = 0;
+    // ポイントのハッシュマップで繰り返し
     for(Entry<UUID, Integer> entry : points.entrySet()) {
+      // 2つを比べて大きい方を選び、変数に入れる
       max = Math.max(max, entry.getValue());
     }
 
     // その最大スコアを持つプレイヤーを探す
     // NOTE: この場合は同点のときに最初の一人しか返さないので注意
     for(Entry<UUID, Integer> entry : points.entrySet()) {
+      // そのポイントが上で調べた最大値と等しければ
       if(entry.getValue() == max) {
+        // そのポイントを持っているプレイヤーを返す
         return Bukkit.getPlayer(entry.getKey());
       }
     }
-
+    // 誰も該当しなければnullで返す
     return null;
   }
 
@@ -119,6 +129,7 @@ public class GameRule {
     if (winner != null) {
       arena.sendMessage(ChatColor.GOLD + winner.getName() + "の勝ちです。");
     } else {
+      // 勝者がいなければ引き分け判定
       arena.sendMessage(ChatColor.GOLD + "引き分けです。");
     }
     // ゲームをリセット
