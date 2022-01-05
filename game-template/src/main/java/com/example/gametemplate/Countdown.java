@@ -1,7 +1,7 @@
 package com.example.gametemplate;
 
+import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
-import net.md_5.bungee.api.ChatColor;
 
 public class Countdown extends BukkitRunnable {
 

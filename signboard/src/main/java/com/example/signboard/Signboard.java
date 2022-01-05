@@ -1,11 +1,11 @@
 package com.example.signboard;
 
 import java.util.Set;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
-import net.md_5.bungee.api.ChatColor;
 
 public class Signboard {
 
