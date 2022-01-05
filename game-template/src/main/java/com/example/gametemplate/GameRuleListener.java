@@ -34,9 +34,11 @@ public class GameRuleListener implements Listener {
    */
   @EventHandler
   public void onQuit(PlayerQuitEvent event) {
+    // ログアウトしたプレイヤーを取得
     Player player = event.getPlayer();
-
+    // そのプレイヤーがゲーム中なら
     if (GameManager.isPlaying(player)) {
+      // その情報を削除する
       GameManager.getArena().removePlayer(player);
     }
   }

@@ -64,23 +64,27 @@ public class Arena {
   }
 
   /**
-   * この会場に所属しているプレイヤーにだけメッセージを通知
+   * この会場に所属しているプレイヤーに"だけ"メッセージを通知
    *
    * @param message
    */
   public void sendMessage(String message) {
+    // 登録しているプレイヤー(のUUID)で繰り返し
     for (UUID uuid: players) {
+      // そのUUIDからプレイヤーを取得して、そのプレイヤーにメッセージを送信
       Bukkit.getPlayer(uuid).sendMessage(message);
     }
   }
 
   /**
-   * 初期状態を設定する
+   * アリーナに入ったときの初期状態を設定する
    *
    * @param player 対象プレイヤー
    */
   private void initializePlayer(Player player) {
+    // インベントリを殻にする
     player.getInventory().clear();
+    // アドベンチャーモードにする
     player.setGameMode(GameMode.ADVENTURE);
     // エフェクトをすべて消す
     for (PotionEffect effect : player.getActivePotionEffects()) {
@@ -114,8 +118,9 @@ public class Arena {
     // プレイヤーを指定位置へテレポート
     player.teleport(spawn);
 
-    // 必要人数を満たしたらカウントダウン開始
+    // 必要人数を満たしたら(必要人数より大きければ)
     if (players.size() >= Config.getRequiredPlayers()) {
+      // カウントダウン開始
       countdown.begin();
     }
   }
@@ -126,7 +131,9 @@ public class Arena {
    * @param player
    */
   public void removePlayer(Player player) {
+    // プレイヤー(のUUID)を参加リストから削除
     players.remove(player.getUniqueId());
+    // プレイヤーをロビーへ移動
     GameManager.getLobby().teleportLobby(player);
 
     // カウントダウン中に必要人数を下回ったらゲーム停止
