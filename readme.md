@@ -27,6 +27,7 @@ MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグイン
 4. [防具立てを使って文字を表示する](display-text)
    1. [防具立てを使って複数行を表示する](signboard)
 5. [周期的にメソッドを実行する](countdown)
+   1. [クールダウン](cooldown)
 6. [インベントリ画面でGUIを作る](gui-inventory)
 7. [倒した回数などを記録する](stats-component)
 
