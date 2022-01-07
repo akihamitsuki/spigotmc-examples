@@ -21,7 +21,7 @@ MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグイン
 
 ## レベル2
 
-1. [エンティティを管理する](entity-management)
+1. [発射物が当たった個所の色を変える](painting-shot)
 2. [設定ファイルを使う](configuration-file)
 3. [記入済みの本を作成する](bind-book)
 4. [防具立てを使って文字を表示する](display-text)
@@ -29,7 +29,8 @@ MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグイン
 5. [周期的にメソッドを実行する](countdown)
    1. [クールダウン](cooldown)
 6. [インベントリ画面でGUIを作る](gui-inventory)
-7. [倒した回数などを記録する](stats-component)
+7. [エンティティを管理する](entity-management)
+8. [倒した回数などを記録する](stats-component)
 
 
 ## レベル3
