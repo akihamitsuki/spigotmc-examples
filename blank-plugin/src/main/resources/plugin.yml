@@ -1,6 +1,0 @@
-# 最初に実行するファイルの指定
-main: com.example.blankplugin.Main
-# プラグインの名前
-name: blank-plugin
-# バージョンはpom.xmlで決めたバージョンを自動で設定
-version: ${project.version}
