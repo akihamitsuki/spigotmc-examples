@@ -1,0 +1,6 @@
+main: com.example.countblocks.Main
+name: countblocks
+version: 0.1
+api-version: 1.18
+commands:
+  count:

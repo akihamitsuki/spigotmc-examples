@@ -10,7 +10,7 @@ MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグイン
 ## レベル0
 
 1. [ローカルでSpigotMCを動かす](local-server)
-2. [何も書かれていないプラグイン](blank-plugin)
+2. [何も書かれていないプラグイン](https://github.com/akihamitsuki/paper-blank-plugin)
 
 
 ## レベル1
@@ -31,6 +31,7 @@ MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグイン
 6. [インベントリ画面でGUIを作る](gui-inventory)
 7. [エンティティを管理する](entity-management)
 8. [倒した回数などを記録する](stats-component)
+9. [範囲内のブロックの種類を数える](count-blocks)
 
 
 ## レベル3
