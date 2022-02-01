@@ -3,35 +3,37 @@ package com.example.guiinventory;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 
 public class Menu {
 
-  public String equipmentUIName = "装備するアイテムを選んでください";
+  public Component equipmentUIName = Component.text("装備するアイテムを選んでください").decoration(TextDecoration.BOLD, true);
 
   public void displayEquipmentUI(Player player) {
     // インベントリの基本情報
-    Inventory inventory = Bukkit.createInventory(null, 9, ChatColor.BOLD + equipmentUIName);
+    Inventory inventory = Bukkit.createInventory(null, 9, equipmentUIName);
     // 配置するアイテムの情報を作成する(これをクリックしたときを条件にする)
     // エリトラ
     ItemStack elytra = new ItemStack(Material.ELYTRA);
     ItemMeta elytraMeta = elytra.getItemMeta();
-    elytraMeta.setDisplayName(ChatColor.DARK_PURPLE + "エリトラを装備する");
+    elytraMeta.displayName(Component.text("エリトラを装備する").color(NamedTextColor.DARK_PURPLE));
     elytra.setItemMeta(elytraMeta);
     // ダイアモンド
     ItemStack diamond = new ItemStack(Material.DIAMOND);
     ItemMeta diamondMeta = diamond.getItemMeta();
-    diamondMeta.setDisplayName(ChatColor.GREEN + "ダイヤモンドの防具を装備する");
-    List<String> diamondLore = new ArrayList<>();
-    diamondLore.add(ChatColor.GRAY + "装備されていない箇所に");
-    diamondLore.add(ChatColor.GRAY + "ダイヤモンドの防具を装備します");
-    diamondMeta.setLore(diamondLore);
+    diamondMeta.displayName(Component.text("ダイヤモンドの防具を装備する").color(NamedTextColor.GREEN));
+    List<Component> diamondLore = new ArrayList<>();
+    diamondLore.add(Component.text("装備されていない箇所に").color(NamedTextColor.GRAY));
+    diamondLore.add(Component.text("ダイヤモンドの防具を装備します").color(NamedTextColor.GRAY));
+    diamondMeta.lore(diamondLore);
     diamond.setItemMeta(diamondMeta);
     // アイテムをインベントリに配置する
     inventory.setItem(0, elytra);

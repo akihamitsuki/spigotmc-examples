@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import net.kyori.adventure.text.Component;
 
 public class MenuListener implements Listener {
 
@@ -18,7 +19,7 @@ public class MenuListener implements Listener {
     // クリックしたプレイヤーを取得
     Player player = (Player) event.getWhoClicked();
     // インベントリ名はgetView()から取得する
-    String inventoryName = event.getView().getTitle();
+    Component inventoryName = event.getView().title();
     // 対象インベントリであれば
     if (inventoryName.contains(menu.equipmentUIName)) {
       // アイテムをクリックしていれば
@@ -26,6 +27,7 @@ public class MenuListener implements Listener {
         // 本来のクリックイベントをキャンセル
         event.setCancelled(true);
         // アイテムの種類に合わせて分岐
+        // NOTE: この場合、自分のインベントリに同じアイテムがあれば、それにも反応する
         switch (event.getCurrentItem().getType()) {
           case DIAMOND:
             this.menu.equipDiamondArmor(player);
