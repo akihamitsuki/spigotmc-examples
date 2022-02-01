@@ -1,5 +1,6 @@
 main: com.example.bindbook.Main
 name: bindbook
 version: 0.1
+api-version: 1.18
 commands:
   book:

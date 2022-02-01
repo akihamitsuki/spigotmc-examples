@@ -1,3 +1,4 @@
 main: com.example.cooldown.Main
 name: cooldown
 version: 0.1
+api-version: 1.18

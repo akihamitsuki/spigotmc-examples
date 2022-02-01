@@ -1,5 +1,6 @@
 main: com.example.displaytext.Main
 name: displaytext
 version: 0.1
+api-version: 1.18
 commands:
   text:
