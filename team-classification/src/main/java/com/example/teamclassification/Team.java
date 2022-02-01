@@ -1,24 +1,27 @@
 package com.example.teamclassification;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import net.kyori.adventure.text.format.NamedTextColor;
 
 public enum Team {
 
   // チームの種類(名称, GUIでのアイテム)
-  RED(ChatColor.RED + "赤チーム", Material.RED_WOOL),
-  BLUE(ChatColor.BLUE + "青チーム", Material.BLUE_WOOL),
-  GREEN(ChatColor.GREEN + "緑チーム", Material.GREEN_WOOL);
+  RED("赤チーム", NamedTextColor.RED, Material.RED_WOOL),
+  BLUE("青チーム", NamedTextColor.BLUE, Material.BLUE_WOOL),
+  GREEN("緑チーム", NamedTextColor.GREEN, Material.GREEN_WOOL);
 
   // インベントリの名前=GUIの名前。ここでどのGUIが選ばれたのかを判定する
-  private static String title = ChatColor.BOLD + "チームを選んでください";
+  private static String title = "チームを選んでください";
   // チーム名
   private String name;
+  // チーム文字色
+  private NamedTextColor textColor;
   // GUIでのアイテム
   private Material material;
 
-  private Team(String name, Material material) {
+  private Team(String name, NamedTextColor textColor, Material material) {
     this.name = name;
+    this.textColor = textColor;
     this.material = material;
   }
 
@@ -26,6 +29,10 @@ public enum Team {
 
   public String getName() {
     return this.name;
+  }
+
+  public NamedTextColor getTextColor() {
+    return this.textColor;
   }
 
   public Material getMaterial() {

@@ -1,19 +1,23 @@
 package com.example.teamclassification;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 
 public class TeamGui {
 
   public TeamGui(Player player) {
+    Component guiName = Component.text(Team.getTitle()).decoration(TextDecoration.BOLD, true);
     // GUIとして扱うインベントリを作成
-    Inventory gui = Bukkit.createInventory(null, 9, Team.getTitle());
+    Inventory gui = Bukkit.createInventory(null, 9, guiName);
 
     for (Team team : Team.values()) {
       // アイテムを作成
@@ -21,9 +25,7 @@ public class TeamGui {
       // アイテムのメタデータを作成
       ItemMeta itemMeta = itemStack.getItemMeta();
       // アイテムの名前を表示
-      itemMeta.setDisplayName(team.getName());
-      //
-      itemMeta.setLocalizedName(team.name());
+      itemMeta.displayName(Component.text(team.getName(), team.getTextColor()));
       // アイテムにメタデータを設定
       itemStack.setItemMeta(itemMeta);
       // GUI(インベントリ)にアイテムを設定
@@ -36,6 +38,8 @@ public class TeamGui {
     player.openInventory(gui);
   }
 
+  private static String listName = "チーム一覧を表示";
+
   /**
    * 一覧表示用のアイテムを作成
    *
@@ -44,11 +48,12 @@ public class TeamGui {
   private ItemStack getListItem() {
     ItemStack itemStack = new ItemStack(Material.PAPER);
     ItemMeta itemMeta = itemStack.getItemMeta();
-    itemMeta.setDisplayName("チーム一覧を表示");
-    itemMeta.setLocalizedName("list");
+    itemMeta.displayName(Component.text(listName));
     itemStack.setItemMeta(itemMeta);
     return itemStack;
   }
+
+  private static String removeName = "チームから外れる";
 
   /**
    * 離脱用のアイテムを作成
@@ -58,8 +63,7 @@ public class TeamGui {
   private ItemStack getRemoveItem() {
     ItemStack itemStack = new ItemStack(Material.TNT);
     ItemMeta itemMeta = itemStack.getItemMeta();
-    itemMeta.setDisplayName("チームから外れる");
-    itemMeta.setLocalizedName("remove");
+    itemMeta.displayName(Component.text(removeName));
     itemStack.setItemMeta(itemMeta);
     return itemStack;
   }
@@ -73,37 +77,54 @@ public class TeamGui {
     // インベントリ内でクリックしたプレイヤー
     Player player = (Player) event.getWhoClicked();
     // クリックしたアイテム名
-    String itemName = event.getCurrentItem().getItemMeta().getLocalizedName();
+    Component itemName = event.getCurrentItem().getItemMeta().displayName();
     // アイテム名で分岐
-    if (itemName.equalsIgnoreCase("remove")) {
+    if (itemName.toString().contains(removeName)) {
       TeamGui.removeTeam(player);
-    } else if (itemName.equalsIgnoreCase("list")) {
+    } else if (itemName.toString().contains(listName)) {
       TeamGui.listTeam(player);
     } else {
-      TeamGui.joinTeam(player, itemName);
+      TeamGui.joinTeam(player, getTeamByItemName(itemName));
     }
+  }
+
+  /**
+   * アイテム名からチームを取得する
+   *
+   * @param itemName
+   * @return
+   */
+  private static Team getTeamByItemName(Component itemName) {
+    TextComponent name = (TextComponent) itemName;
+    for (Team team : Team.values()) {
+      if (team.getName().equals(name.content())) {
+        return team;
+      }
+    }
+    return null;
   }
 
   /**
    * プレイヤーをチームに所属させる
    *
    * @param player
-   * @param itemName
+   * @param team
    */
-  public static void joinTeam(Player player, String itemName) {
-    // クリックしたアイテムからチームを取得する
-    Team team = Team.valueOf(itemName);
+  public static void joinTeam(Player player, Team team) {
     // チームを操作するマネージャーを取得する
     TeamManager teamManager = Main.getInstance().getTeamManager();
     // 未所属、かつクリックしたチームに所属していなければ
     if (teamManager.getTeam(player) == null || !teamManager.getTeam(player).equals(team)) {
-      // 通知
-      player.sendMessage(team.getName() + ChatColor.RESET + "に入りました。");
       // チームに所属させる
       teamManager.setTeam(player, team);
+      // 通知
+      player.sendMessage(Component.text(team.getName(), team.getTextColor())
+          .append(Component.text("に入りました。", NamedTextColor.WHITE)));
     } else {
       // 通知
-      player.sendMessage("すでに" + team.getName() + ChatColor.RESET + "に入っています。");
+      player.sendMessage(Component.text("すでに")
+          .append(Component.text(team.getName(), team.getTextColor()))
+          .append(Component.text("に入っています。", NamedTextColor.WHITE)));
     }
   }
 
@@ -115,9 +136,9 @@ public class TeamGui {
   public static void removeTeam(Player player) {
     boolean isRemoved = Main.getInstance().getTeamManager().removeTeam(player);
     if (isRemoved) {
-      player.sendMessage(ChatColor.GREEN + "チームから外れました");
+      player.sendMessage(Component.text("チームから外れました", NamedTextColor.GREEN));
     } else {
-      player.sendMessage(ChatColor.YELLOW + "チームに所属していません");
+      player.sendMessage(Component.text("チームに所属していません", NamedTextColor.YELLOW));
     }
   }
 
@@ -129,11 +150,10 @@ public class TeamGui {
   public static void listTeam(Player player) {
     TeamManager teamManager = Main.getInstance().getTeamManager();
     for (Team team : Team.values()) {
-      player.sendMessage(
-          team.getName()
-          + ChatColor.RESET + "には"
-          + ChatColor.BOLD + teamManager.getTeamCount(team)
-          + ChatColor.RESET + "人が所属しています。");
+      player.sendMessage(Component.text(team.getName(), team.getTextColor())
+          .append(Component.text("には", NamedTextColor.WHITE))
+          .append(Component.text(teamManager.getTeamCount(team), NamedTextColor.GOLD).decoration(TextDecoration.BOLD, true))
+          .append(Component.text("人が所属しています。", NamedTextColor.WHITE)));
     }
   }
 
