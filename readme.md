@@ -32,6 +32,7 @@ MinecraftのサーバーMODである**SpigotMC/PaperMC**で動くプラグイン
 7. [エンティティを管理する](entity-management)
 8. [倒した回数などを記録する](stats-component)
 9. [範囲内のブロックの種類を数える](count-blocks)
+10. [コマンドでログイン時の座標を設定する](spawn-point)
 
 
 ## レベル3

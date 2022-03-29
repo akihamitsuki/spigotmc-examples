@@ -1,0 +1,6 @@
+main: com.example.spawnpoint.Main
+name: spawnpoint
+version: 0.1
+api-version: 1.18
+commands:
+  player:
